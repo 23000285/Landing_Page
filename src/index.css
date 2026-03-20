@@ -1,0 +1,151 @@
+/* ── CSS Variables ── */
+:root {
+  --accent: #5B3FD6;
+  --accent-hover: #7055E8;
+  --accent-soft: #EDE9FF;
+  --accent-border: rgba(91,63,214,0.25);
+  --dark: #0C0C18;
+  --dark-card: #13131F;
+  --dark-border: rgba(255,255,255,0.08);
+  --light-bg: #F8F8FC;
+  --white: #FFFFFF;
+  --text: #1A1A2C;
+  --muted: #6A6A80;
+  --border: #E6E6F0;
+  --card: #F4F4FA;
+  --green: #22C55E;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-md: 0 12px 40px rgba(91,63,214,0.12);
+  --shadow-lg: 0 24px 60px rgba(91,63,214,0.18);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; border: none; outline: none; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ── Shared Section Styles ── */
+.section { padding: 100px 6%; }
+.section-inner { max-width: 1180px; margin: 0 auto; }
+.section-tag {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--text);
+}
+.section-sub {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 520px;
+}
+
+/* ── Scroll Reveal Animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Pulse animation ── */
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.45); }
+  50%     { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50%     { transform: translateY(-18px); }
+}
+@keyframes twinkle {
+  0%,100% { opacity: 0.25; transform: scale(1) rotate(0deg); }
+  50%     { opacity: 1; transform: scale(1.4) rotate(22deg); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Shared Button Styles ── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent); color: #fff;
+  padding: 0.85rem 2rem; border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 0.88rem; font-weight: 700;
+  transition: all 0.25s;
+  border: 2px solid transparent;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--text);
+  padding: 0.85rem 2rem; border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 0.88rem; font-weight: 700;
+  border: 2px solid var(--border);
+  transition: all 0.25s;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Tech Tag ── */
+.tech-tag {
+  display: inline-block;
+  background: rgba(91,63,214,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(91,63,214,0.22);
+  border-radius: 8px;
+  padding: 0.28rem 0.7rem;
+  font-size: 0.73rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+/* ── Responsive helpers ── */
+@media (max-width: 768px) {
+  .section { padding: 70px 5%; }
+  .section-title { letter-spacing: -0.5px; }
+}

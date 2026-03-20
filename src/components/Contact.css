@@ -1,0 +1,78 @@
+.contact-section { background: var(--light-bg); }
+
+.contact-wrap {
+  max-width: 680px; margin: 0 auto;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+}
+
+.contact-header { text-align: center; margin-bottom: 2.5rem; }
+.contact-sub {
+  color: var(--muted); font-size: 0.92rem; margin-top: 0.5rem;
+}
+
+/* form layout */
+.contact-form { display: flex; flex-direction: column; gap: 0; }
+
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+
+.form-group {
+  display: flex; flex-direction: column; gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+.form-group label {
+  font-size: 0.82rem; font-weight: 600; color: var(--text);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.78rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem; color: var(--text);
+  background: var(--light-bg);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  background: var(--white);
+}
+.form-group textarea { resize: vertical; }
+
+.form-check {
+  display: flex; align-items: center; gap: 0.65rem;
+  margin: 0.25rem 0 1.5rem;
+}
+.form-check input { width: 16px; height: 16px; accent-color: var(--accent); flex-shrink: 0; }
+.form-check label { font-size: 0.84rem; color: var(--muted); }
+
+.submit-btn {
+  width: 100%; padding: 1rem;
+  background: var(--accent); color: #fff;
+  border-radius: 50px;
+  font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+  transition: all 0.25s;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.submit-btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(91,63,214,0.3);
+}
+.submit-btn:disabled { opacity: 0.75; cursor: not-allowed; }
+.submit-btn.success { background: #16a34a; }
+.submit-btn.error   { background: #dc2626; }
+
+@media (max-width: 600px) {
+  .contact-wrap { padding: 2rem 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+}

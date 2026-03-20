@@ -1,0 +1,36 @@
+.achieve-section { background: var(--light-bg); }
+
+.achieve-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.4rem; margin-top: 3rem;
+}
+
+.achieve-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  display: flex; align-items: flex-start; gap: 1.1rem;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+.achieve-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-soft);
+}
+
+.achieve-icon {
+  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+}
+
+.achieve-text h4 {
+  font-family: var(--font-display);
+  font-size: 0.97rem; font-weight: 700; color: var(--text);
+}
+.achieve-text p {
+  font-size: 0.83rem; color: var(--muted);
+  margin-top: 0.3rem; line-height: 1.55;
+}
