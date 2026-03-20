@@ -1,48 +1,26 @@
 import './Footer.css'
 
-const LINKS = [
-  { href: '#about',          label: 'About' },
-  { href: '#skills',         label: 'Skills' },
-  { href: '#experience',     label: 'Experience' },
-  { href: '#projects',       label: 'Projects' },
-  { href: '#education',      label: 'Education' },
-  { href: '#certifications', label: 'Certifications' },
-  { href: '#contact',        label: 'Contact' },
-]
-
-const SOCIALS = [
-  { href: 'https://linkedin.com/in/venkatanathan-p-r-01b0a6291', label: 'LinkedIn',  icon: '🔗' },
-  { href: 'https://github.com/23000285',                          label: 'GitHub',    icon: '💻' },
-  { href: 'mailto:rvenkatanathan2005@gmail.com',                  label: 'Email',     icon: '📧' },
-]
-
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <div className="footer-top">
-          <a href="#hero" className="footer-logo">PR<span>V</span></a>
-          <div className="footer-socials">
-            {SOCIALS.map(({ href, label, icon }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="social-link">
-                {icon} {label}
-              </a>
-            ))}
-          </div>
+        <div className="footer-left">
+          <p className="footer-name">P R Venkatanathan</p>
+          <p className="footer-role">Backend Developer · AI/ML Student</p>
         </div>
-
         <nav className="footer-nav">
-          {LINKS.map(({ href, label }) => (
-            <a key={href} href={href}>{label}</a>
+          {['#about','#skills','#experience','#projects','#education','#contact'].map(href => (
+            <a key={href} href={href}>{href.slice(1).toUpperCase()}</a>
           ))}
         </nav>
-
-        <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} P R Venkatanathan · Built with React &amp; ❤️</p>
-          <a href="mailto:rvenkatanathan2005@gmail.com" className="footer-email">
-            rvenkatanathan2005@gmail.com
-          </a>
+        <div className="footer-right">
+          <a href="mailto:rvenkatanathan2005@gmail.com">rvenkatanathan2005@gmail.com</a>
+          <a href="https://github.com/23000285" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/venkatanathan-p-r-01b0a6291" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
+      </div>
+      <div className="footer-bottom">
+        <p>© {new Date().getFullYear()} P R Venkatanathan · Built with React</p>
       </div>
     </footer>
   )

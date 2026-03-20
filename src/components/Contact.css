@@ -1,78 +1,159 @@
-.contact-section { background: var(--light-bg); }
-
-.contact-wrap {
-  max-width: 680px; margin: 0 auto;
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 3rem;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+.contact-section {
+  background: #F0F4FF;
+  padding: 90px 40px;
 }
 
-.contact-header { text-align: center; margin-bottom: 2.5rem; }
+.contact-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* "Get In Touch" small label — centered, grey, small */
+.contact-label {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+/* "Contact me" large heading */
+.contact-title {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
 .contact-sub {
-  color: var(--muted); font-size: 0.92rem; margin-top: 0.5rem;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 36px;
 }
 
-/* form layout */
-.contact-form { display: flex; flex-direction: column; gap: 0; }
+/* Form — left-aligned text inside centered container */
+.contact-form {
+  text-align: left;
+}
 
+/* 2-column row */
 .form-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 0;
 }
 
 .form-group {
-  display: flex; flex-direction: column; gap: 0.45rem;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
 }
+
 .form-group label {
-  font-size: 0.82rem; font-weight: 600; color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dark);
 }
+
+/* Inputs — clean white boxes with light border, no radius heavy-ness */
 .form-group input,
-.form-group select,
 .form-group textarea {
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 0.78rem 1rem;
-  font-family: var(--font-body);
-  font-size: 0.9rem; color: var(--text);
-  background: var(--light-bg);
+  background: var(--white);
+  border: 1px solid #D0D0E0;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-family: var(--font);
+  font-size: 0.86rem;
+  color: var(--text-dark);
   outline: none;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s;
   width: 100%;
 }
 .form-group input:focus,
-.form-group select:focus,
 .form-group textarea:focus {
-  border-color: var(--accent);
-  background: var(--white);
+  border-color: var(--purple);
 }
 .form-group textarea { resize: vertical; }
 
-.form-check {
-  display: flex; align-items: center; gap: 0.65rem;
-  margin: 0.25rem 0 1.5rem;
+/* Select dropdown with custom arrow */
+.select-wrap {
+  position: relative;
 }
-.form-check input { width: 16px; height: 16px; accent-color: var(--accent); flex-shrink: 0; }
-.form-check label { font-size: 0.84rem; color: var(--muted); }
+.select-wrap select {
+  width: 100%;
+  background: var(--white);
+  border: 1px solid #D0D0E0;
+  border-radius: 6px;
+  padding: 10px 36px 10px 14px;
+  font-family: var(--font);
+  font-size: 0.86rem;
+  color: var(--text-dark);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.select-wrap select:focus { border-color: var(--purple); }
+.select-arrow {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
+/* Checkbox row */
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.form-check input {
+  width: 14px; height: 14px;
+  accent-color: var(--purple);
+  flex-shrink: 0;
+}
+.form-check label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* Submit button — centered, purple, matches image 3 */
+.form-submit-wrap {
+  display: flex;
+  justify-content: center;
+}
 
 .submit-btn {
-  width: 100%; padding: 1rem;
-  background: var(--accent); color: #fff;
-  border-radius: 50px;
-  font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
-  transition: all 0.25s;
-  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 11px 40px;
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
 }
 .submit-btn:hover:not(:disabled) {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(91,63,214,0.3);
+  background: var(--purple-light);
+  transform: translateY(-1px);
 }
 .submit-btn:disabled { opacity: 0.75; cursor: not-allowed; }
 .submit-btn.success { background: #16a34a; }
 .submit-btn.error   { background: #dc2626; }
 
-@media (max-width: 600px) {
-  .contact-wrap { padding: 2rem 1.5rem; }
+@media (max-width: 520px) {
   .form-row { grid-template-columns: 1fr; }
+  .contact-section { padding: 60px 24px; }
 }

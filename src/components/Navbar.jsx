@@ -1,28 +1,26 @@
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 
-const NAV_LINKS = [
-  { href: '#about',          label: 'About' },
-  { href: '#skills',         label: 'Skills' },
-  { href: '#experience',     label: 'Experience' },
-  { href: '#projects',       label: 'Projects' },
-  { href: '#education',      label: 'Education' },
-  { href: '#certifications', label: 'Certifications' },
-  { href: '#contact',        label: 'Contact' },
+const LINKS = [
+  { href: '#education',    label: 'EDUCATION' },
+  { href: '#skills',       label: 'SKILLS' },
+  { href: '#experience',   label: 'EXPERIENCE' },
+  { href: '#about',        label: 'PROFILE' },
+  { href: '#projects',     label: 'PORTFOLIO' },
+  { href: '#achievements', label: 'CLIENTS' },
+  { href: '#contact',      label: 'CONTACT' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled]   = useState(false)
-  const [active,   setActive]     = useState('')
-  const [menuOpen, setMenuOpen]   = useState(false)
+  const [active, setActive] = useState('')
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 20)
       const sections = document.querySelectorAll('section[id]')
       let cur = ''
       sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 90) cur = s.id
+        if (window.scrollY >= s.offsetTop - 100) cur = s.id
       })
       setActive(cur)
     }
@@ -31,36 +29,30 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <a href="#hero" className="nav-logo">
-        PR<span>V</span>
-      </a>
+    <nav className="navbar">
+      <div className="navbar-inner">
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          {LINKS.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                className={active === href.slice(1) ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-      <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-        {NAV_LINKS.map(({ href, label }) => (
-          <li key={href}>
-            <a
-              href={href}
-              className={active === href.slice(1) ? 'nav-active' : ''}
-              onClick={() => setMenuOpen(false)}
-            >
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
-
-      <a href="#contact" className="nav-cta" onClick={() => setMenuOpen(false)}>
-        Get In Touch
-      </a>
-
-      <button
-        className={`hamburger ${menuOpen ? 'open' : ''}`}
-        onClick={() => setMenuOpen(v => !v)}
-        aria-label="Toggle menu"
-      >
-        <span /><span /><span />
-      </button>
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen(v => !v)}
+          aria-label="menu"
+        >
+          <span /><span /><span />
+        </button>
+      </div>
     </nav>
   )
 }

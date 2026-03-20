@@ -1,82 +1,83 @@
 .navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 6%; height: 64px;
-  transition: background 0.3s, box-shadow 0.3s, border-bottom 0.3s;
-}
-.navbar.scrolled {
-  background: rgba(255,255,255,0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 2px solid var(--text-dark);
 }
 
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 800; font-size: 1.3rem;
-  color: var(--text); letter-spacing: -0.5px;
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
 }
-.nav-logo span { color: var(--accent); }
 
 .nav-links {
-  display: flex; align-items: center; gap: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  list-style: none;
 }
+
 .nav-links a {
-  font-family: var(--font-display);
-  font-size: 0.75rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--muted);
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #555566;
+  text-transform: uppercase;
   transition: color 0.2s;
-  position: relative; padding-bottom: 2px;
+  padding: 4px 0;
+  position: relative;
 }
 .nav-links a::after {
   content: '';
-  position: absolute; bottom: -2px; left: 0; right: 0;
-  height: 2px; background: var(--accent);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.25s;
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 2px;
+  background: var(--purple);
+  transform: scaleX(0);
+  transition: transform 0.2s;
 }
-.nav-links a:hover, .nav-links a.nav-active { color: var(--accent); }
-.nav-links a:hover::after, .nav-links a.nav-active::after { transform: scaleX(1); }
-
-.nav-cta {
-  background: var(--accent); color: #fff;
-  padding: 0.5rem 1.3rem; border-radius: 50px;
-  font-family: var(--font-display); font-size: 0.75rem; font-weight: 700;
-  letter-spacing: 0.05em;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-}
-.nav-cta:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(91,63,214,0.35);
-}
+.nav-links a:hover,
+.nav-links a.active { color: var(--text-dark); }
+.nav-links a:hover::after,
+.nav-links a.active::after { transform: scaleX(1); }
 
 .hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  background: none; padding: 4px;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  margin-left: auto;
 }
 .hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--text); border-radius: 2px;
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--text-dark);
+  border-radius: 2px;
   transition: all 0.3s;
 }
-.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  .navbar-inner { justify-content: flex-end; }
   .nav-links {
-    display: none; position: fixed;
-    top: 64px; left: 0; right: 0;
-    flex-direction: column; gap: 0;
+    display: none;
+    position: fixed;
+    top: 56px; left: 0; right: 0;
     background: var(--white);
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 2rem;
     border-bottom: 1px solid var(--border);
-    padding: 1.5rem 6%;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   }
   .nav-links.open { display: flex; }
-  .nav-links a { font-size: 0.9rem; padding: 0.75rem 0; }
+  .nav-links li { border-bottom: 1px solid var(--border); }
+  .nav-links a { display: block; padding: 12px 0; font-size: 0.8rem; }
   .hamburger { display: flex; }
-  .nav-cta { display: none; }
 }

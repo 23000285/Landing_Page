@@ -1,67 +1,110 @@
-.about-section { background: var(--dark); }
+.about-section {
+  background: var(--white);
+  padding: 90px 40px;
+}
 
 .about-inner {
-  display: flex; align-items: center; gap: 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 80px;
 }
 
-.about-img-side { flex-shrink: 0; position: relative; }
+/* ── LEFT: photo with blob ── */
+.about-photo-wrap {
+  flex-shrink: 0;
+  position: relative;
+  width: 360px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.about-glow {
-  position: absolute; width: 320px; height: 320px;
-  border-radius: 50%;
-  background: rgba(91,63,214,0.3);
-  filter: blur(70px);
-  top: 50%; left: 50%; transform: translate(-50%,-50%);
+/* The purple brush-stroke blob from image 2 */
+.about-blob {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.about-frame {
-  width: 300px; height: 360px;
-  border-radius: 32px;
-  background: linear-gradient(145deg, rgba(91,63,214,0.18), rgba(91,63,214,0.04));
-  border: 1px solid rgba(91,63,214,0.28);
-  display: flex; align-items: center; justify-content: center;
-  position: relative; z-index: 1;
+.about-blob svg {
+  width: 100%;
+  height: 100%;
 }
-.about-avatar-icon {
+
+/* The photo sits on top of the blob */
+.about-photo-frame {
+  position: relative;
+  z-index: 2;
+  width: 260px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-avatar {
+  width: 220px;
+  height: 260px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.about-avatar-emoji {
   font-size: 5.5rem;
-  width: 130px; height: 130px; border-radius: 50%;
-  background: rgba(91,63,214,0.18);
-  border: 2px solid rgba(91,63,214,0.35);
-  display: flex; align-items: center; justify-content: center;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
 
-.about-text { flex: 1; }
+/* ── RIGHT: text ── */
+.about-text {
+  flex: 1;
+}
+
+.about-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+
+.about-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+}
 
 .about-p {
-  color: rgba(255,255,255,0.62);
-  line-height: 1.82; font-size: 0.97rem;
-  margin-top: 1.2rem;
+  font-size: 0.88rem;
+  line-height: 1.78;
+  color: var(--text-mid);
+  margin-bottom: 16px;
 }
-.about-p strong { color: rgba(255,255,255,0.85); }
 
-.about-chips {
-  display: flex; flex-wrap: wrap; gap: 0.6rem;
-  margin-top: 1.8rem;
+.about-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
 }
-.about-chip {
-  background: rgba(91,63,214,0.14);
-  border: 1px solid rgba(91,63,214,0.3);
-  color: #9B7FFF; border-radius: 50px;
-  padding: 0.38rem 1rem; font-size: 0.8rem; font-weight: 500;
-  transition: background 0.2s;
+.about-link {
+  font-size: 0.84rem;
+  color: var(--purple);
+  font-weight: 500;
+  transition: opacity 0.2s;
 }
-.about-chip:hover { background: rgba(91,63,214,0.28); }
+.about-link:hover { opacity: 0.7; }
 
-.about-info { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.8rem; }
-.about-info-row {
-  display: flex; align-items: center; gap: 0.8rem;
-  font-size: 0.9rem;
-}
-.about-info-row span:first-child { font-size: 1.05rem; }
-.about-info-row a,
-.about-info-row span:last-child { color: rgba(255,255,255,0.65); }
-.about-info-row a:hover { color: #fff; text-decoration: underline; }
-
-@media (max-width: 900px) {
-  .about-inner { flex-direction: column; }
-  .about-img-side { display: none; }
+@media (max-width: 860px) {
+  .about-inner { flex-direction: column; gap: 40px; }
+  .about-photo-wrap { width: 280px; height: 280px; }
+  .about-section { padding: 60px 24px; }
 }
