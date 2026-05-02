@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import './Navbar.css'
 
 const LINKS = [
-  { href: '#education',    label: 'EDUCATION' },
-  { href: '#skills',       label: 'SKILLS' },
-  { href: '#experience',   label: 'EXPERIENCE' },
-  { href: '#about',        label: 'PROFILE' },
-  { href: '#projects',     label: 'PORTFOLIO' },
-  { href: '#achievements', label: 'CLIENTS' },
-  { href: '#contact',      label: 'CONTACT' },
+  { href: '#education',     label: 'EDUCATION' },
+  { href: '#skills',        label: 'SKILLS' },
+  { href: '#experience',    label: 'EXPERIENCE' },
+  { href: '#hackathons',    label: 'HACKATHONS' },
+  { href: '#certificates',  label: 'CERTIFICATES' },
+  { href: '#about',         label: 'PROFILE' },
+  { href: '#projects',      label: 'PORTFOLIO' },
+  { href: '#contact',       label: 'CONTACT' },
 ]
 
 export default function Navbar() {

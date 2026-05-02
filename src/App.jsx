@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import Skills from './components/Skills'
 import About from './components/About'
 import Experience from './components/Experience'
+import Hackathons from './components/Hackathons'
+import Certificates from './components/Certificates'
 import Projects from './components/Projects'
 import Education from './components/Education'
 import Achievements from './components/Achievements'
@@ -27,6 +29,8 @@ export default function App() {
       <Skills />
       <About />
       <Experience />
+      <Hackathons />
+      <Certificates />
       <Projects />
       <Education />
       <Achievements />
