@@ -1,6 +1,9 @@
+/* ═══════════════════════════════════════
+   SKILLS SECTION
+   ═══════════════════════════════════════ */
 .skills-section {
   background: var(--white);
-  padding: 70px 40px 80px;
+  padding: 90px 40px;
 }
 
 .skills-inner {
@@ -13,51 +16,274 @@
   font-weight: 500;
   color: var(--text-muted);
   margin-bottom: 6px;
-  letter-spacing: 0.02em;
 }
 
 .skills-title {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 48px;
+  margin-bottom: 8px;
   letter-spacing: -0.3px;
 }
 
-/* 4-column grid matching the image */
-.skills-grid {
+.skills-sub {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  margin-bottom: 52px;
+  line-height: 1.6;
+}
+
+/* ─── Grid of hex cards ─── */
+.hex-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 28px 24px;
 }
 
-.skill-card {
-  padding: 0;
+/* ─── Each hex domain wrapper ─── */
+.hex-domain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
 }
 
-.skill-icon {
-  margin-bottom: 14px;
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
+/* ═══════════════════════════════════════
+   THE HEXAGON — CSS clip-path technique
+   polygon: flat-top hexagon
+   ═══════════════════════════════════════ */
+.hexagon {
+  /* Size */
+  width: 160px;
+  height: 184px;       /* height = width × (2/√3) ≈ 1.155 */
+
+  /* Flat-top hexagon via clip-path */
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
+
+  /* Colours from CSS variable */
+  background: var(--hl, #EDE9FF);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.25s, transform 0.25s;
+  outline: none;
+  flex-shrink: 0;
 }
 
-.skill-card-title {
-  font-size: 0.95rem;
+.hexagon:hover,
+.hex-domain-open .hexagon {
+  background: var(--hc, #6C47FF);
+  transform: scale(1.04);
+}
+
+/* Inner face — vertically centered inside the hex */
+.hex-face {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  pointer-events: none;
+  padding: 20px 16px;
+}
+
+.hex-icon {
+  font-size: 2rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.hexagon:hover .hex-icon,
+.hex-domain-open .hex-icon {
+  transform: scale(1.1);
+}
+
+.hex-label {
+  font-family: var(--font);
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-dark);
-  margin-bottom: 10px;
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.2s;
+}
+.hexagon:hover .hex-label,
+.hex-domain-open .hex-label {
+  color: #fff;
 }
 
-.skill-card-desc {
-  font-size: 0.82rem;
-  line-height: 1.65;
+.hex-hint {
+  font-size: 0.6rem;
   color: var(--text-muted);
+  transition: color 0.2s;
+  margin-top: 2px;
+}
+.hexagon:hover .hex-hint,
+.hex-domain-open .hex-hint {
+  color: rgba(255,255,255,0.7);
 }
 
-@media (max-width: 900px) {
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+/* ═══════════════════════════════════════
+   SKILLS PANEL — expands below the hex
+   ═══════════════════════════════════════ */
+.hex-skills-panel {
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease, opacity 0.3s ease;
+  opacity: 0;
+  margin-top: -4px;
 }
-@media (max-width: 500px) {
-  .skills-grid { grid-template-columns: 1fr; }
-  .skills-section { padding: 50px 24px; }
+
+.hex-domain-open .hex-skills-panel {
+  max-height: 320px;
+  opacity: 1;
+}
+
+/* Slight connector triangle pointing up toward the hex */
+.hex-skills-panel::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--hl, #EDE9FF);
+  margin: 0 auto 2px;
+}
+
+/* The skill circles grid */
+.hex-skills-grid {
+  background: var(--hl, #EDE9FF);
+  border-radius: 0 0 16px 16px;
+  padding: 14px 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ─── Individual skill circle ─── */
+.skill-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--hc, #6C47FF);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  cursor: default;
+  transition: background 0.2s, transform 0.2s;
+  animation: popIn 0.3s ease both;
+  position: relative;
+}
+
+.skill-circle:hover {
+  background: var(--hc, #6C47FF);
+  transform: scale(1.08);
+}
+
+/* Tooltip on hover */
+.skill-circle::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-dark);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+.skill-circle:hover::after {
+  opacity: 1;
+}
+
+.skill-circle-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: filter 0.2s;
+}
+.skill-circle:hover .skill-circle-icon {
+  filter: brightness(10);
+}
+
+.skill-circle-name {
+  font-family: var(--font);
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: var(--hc, #6C47FF);
+  line-height: 1;
+  text-align: center;
+  transition: color 0.2s;
+}
+.skill-circle:hover .skill-circle-name {
+  color: #fff;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─── "Learn more" documentation link ─── */
+.hex-learn-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: var(--hc, #6C47FF);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  letter-spacing: 0.01em;
+}
+.hex-learn-link:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 1000px) {
+  .hex-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .hex-grid { grid-template-columns: repeat(2, 1fr); gap: 20px 16px; }
+  .hexagon { width: 130px; height: 150px; }
+  .hex-icon { font-size: 1.6rem; }
+  .hex-label { font-size: 0.72rem; }
+  .skills-section { padding: 60px 24px; }
+}
+
+@media (max-width: 420px) {
+  .hex-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .hexagon { width: 110px; height: 126px; }
+  .skill-circle { width: 48px; height: 48px; }
+  .skill-circle-icon { font-size: 0.9rem; }
 }

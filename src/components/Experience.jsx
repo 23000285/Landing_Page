@@ -14,7 +14,7 @@ export default function Experience() {
     <section id="experience" className="exp-section">
       <div className="exp-inner">
         <p className="section-label">Work Experience</p>
-        <h2 className="section-heading">Internship Experience</h2>
+        <h2 className="section-heading">Virtual Internship Experience</h2>
 
         <div className="exp-card reveal">
           <div className="exp-card-left">
@@ -28,7 +28,7 @@ export default function Experience() {
               </div>
               <span className="exp-badge">
                 <span className="exp-dot" />
-                Feb 2026 – Present
+                Feb 2026 – April 2026
               </span>
             </div>
 
