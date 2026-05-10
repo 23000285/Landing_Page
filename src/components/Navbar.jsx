@@ -12,7 +12,7 @@ const LINKS = [
   { href: '#contact',       label: 'CONTACT' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ dark, onToggleDark }) {
   const [active, setActive] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -45,6 +45,16 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+
+        {/* Dark / Light mode toggle — lives in nav bar */}
+        <button
+          className="nav-theme-btn"
+          onClick={onToggleDark}
+          aria-label="Toggle dark mode"
+          title={dark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+        >
+          {dark ? '☀️' : '🌙'}
+        </button>
 
         <button
           className="hamburger"

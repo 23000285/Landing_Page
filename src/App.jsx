@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Skills from './components/Skills'
@@ -13,9 +13,19 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
+  const [dark, setDark] = useState(false)
+
+  /* Apply dark-theme class to <body> — drives all global CSS overrides */
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', dark)
+  }, [dark])
+
+  /* Scroll reveal observer */
   useEffect(() => {
     const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') }),
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible')
+      }),
       { threshold: 0.1 }
     )
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
@@ -24,7 +34,7 @@ export default function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar dark={dark} onToggleDark={() => setDark(d => !d)} />
       <Hero />
       <Skills />
       <About />
@@ -34,7 +44,8 @@ export default function App() {
       <Projects />
       <Education />
       <Achievements />
-      <Contact />
+      {/* Contact still gets dark prop for its own internal styling */}
+      <Contact dark={dark} onToggleDark={() => setDark(d => !d)} />
       <Footer />
     </>
   )

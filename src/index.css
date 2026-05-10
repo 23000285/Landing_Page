@@ -1,18 +1,50 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ════════════════════════════════════════════
+   LIGHT THEME (default)
+   ════════════════════════════════════════════ */
 :root {
-  --purple: #6C47FF;
+  --purple:       #6C47FF;
   --purple-light: #8B6AFF;
-  --purple-soft: #EDE9FF;
-  --text-dark: #1A1A2E;
-  --text-mid: #444455;
+  --purple-soft:  #EDE9FF;
+
+  --text-dark:  #1A1A2E;
+  --text-mid:   #444455;
   --text-muted: #888899;
-  --white: #FFFFFF;
+
+  --white:    #FFFFFF;
   --bg-light: #F7F8FC;
-  --border: #E8E8F0;
+  --border:   #E8E8F0;
+
+  --nav-bg:       rgba(255,255,255,0.93);
+  --nav-border:   #E8E8F0;
+  --card-bg:      #FFFFFF;
+  --card-border:  #E8E8F0;
+  --section-alt:  #F7F8FC;
+
   --font: 'Poppins', sans-serif;
 }
 
+/* ════════════════════════════════════════════
+   DARK THEME — body.dark-theme
+   ════════════════════════════════════════════ */
+body.dark-theme {
+  --text-dark:  #E8E8F8;
+  --text-mid:   #B0B0CC;
+  --text-muted: #7070A0;
+
+  --white:    #0E0E1C;
+  --bg-light: #13132A;
+  --border:   rgba(255,255,255,0.08);
+
+  --nav-bg:      rgba(14,14,28,0.96);
+  --nav-border:  rgba(255,255,255,0.07);
+  --card-bg:     #16162E;
+  --card-border: rgba(255,255,255,0.07);
+  --section-alt: #13132A;
+}
+
+/* ── Base ── */
 html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
@@ -21,6 +53,7 @@ body {
   background: var(--white);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -28,7 +61,122 @@ ul { list-style: none; }
 button { font-family: var(--font); cursor: pointer; border: none; background: none; }
 img { max-width: 100%; display: block; }
 
-/* Scroll reveal */
+/* ════════════════════════════════════════════
+   GLOBAL DARK OVERRIDES — every section
+   ════════════════════════════════════════════ */
+
+/* ── Navbar ── */
+body.dark-theme .navbar {
+  background: var(--nav-bg) !important;
+  border-bottom-color: var(--nav-border) !important;
+}
+body.dark-theme .nav-links a  { color: rgba(180,180,210,0.6); }
+body.dark-theme .nav-links a:hover,
+body.dark-theme .nav-links a.active { color: #fff; }
+body.dark-theme .nav-logo     { color: #E8E8F8; }
+
+/* ── Hero ── */
+body.dark-theme .hero-section {
+  background: linear-gradient(135deg, #0F0F22 0%, #0B0B1A 55%, #0D0D20 100%) !important;
+}
+body.dark-theme .hero-h1      { color: #E8E8F8; }
+body.dark-theme .hero-greeting,
+body.dark-theme .hero-desc    { color: rgba(180,180,210,0.6); }
+body.dark-theme .hero-tag     { background: #16162E; border-color: rgba(255,255,255,0.08); color: rgba(180,180,210,0.6); }
+body.dark-theme .hero-img-wrap { background: linear-gradient(145deg, #1E1840, #1A2040); }
+body.dark-theme .badge        { background: #16162E; box-shadow: 0 8px 28px rgba(0,0,0,0.4); }
+body.dark-theme .badge strong,
+body.dark-theme .badge small  { color: #B0B0CC; }
+body.dark-theme .hero-stat-num   { color: #E8E8F8; }
+body.dark-theme .hero-stat-label { color: rgba(160,160,200,0.55); }
+body.dark-theme .btn-outline  { color: #E8E8F8; border-color: rgba(255,255,255,0.2); }
+body.dark-theme .btn-outline:hover { border-color: var(--purple); color: #fff; }
+
+/* ── Skills ── */
+body.dark-theme .skills-section { background: #0E0E1C; }
+body.dark-theme .skills-title,
+body.dark-theme .skills-label   { color: #E8E8F8; }
+body.dark-theme .skills-sub     { color: rgba(160,160,200,0.55); }
+body.dark-theme .hexagon        { background: #1A1A30; }
+body.dark-theme .hexagon:hover,
+body.dark-theme .hex-domain-open .hexagon { background: var(--purple); }
+body.dark-theme .hex-label      { color: #E8E8F8; }
+
+/* ── About ── */
+body.dark-theme .about-section  { background: #0B0B18; }
+
+/* ── Experience ── */
+body.dark-theme .exp-section    { background: #0E0E1C; }
+body.dark-theme .exp-card       { background: #16162E; border-color: rgba(255,255,255,0.07); }
+body.dark-theme .exp-title      { color: #E8E8F8; }
+body.dark-theme .exp-company,
+body.dark-theme .exp-organizer  { color: rgba(160,160,200,0.55); }
+body.dark-theme .exp-points li  { color: #B0B0CC; }
+body.dark-theme .section-label,
+body.dark-theme .section-heading { color: #E8E8F8; }
+
+/* ── Hackathons ── */
+body.dark-theme .hack-section   { background: #0E0E1C; }
+body.dark-theme .hack-card      { background: #16162E; border-color: rgba(255,255,255,0.07); }
+body.dark-theme .hack-name      { color: #E8E8F8; }
+body.dark-theme .hack-organizer { color: rgba(160,160,200,0.55); }
+body.dark-theme .hack-teams-num { color: #E8E8F8; }
+body.dark-theme .hack-tag       { background: #1C1C38; border-color: rgba(255,255,255,0.08); color: #B0B0CC; }
+body.dark-theme .hack-panel-inner { background: #101028; border-top-color: rgba(255,255,255,0.06); }
+body.dark-theme .hack-story-para  { color: #B0B0CC; }
+body.dark-theme .hack-section-title { color: rgba(160,160,200,0.5); border-bottom-color: rgba(255,255,255,0.06); }
+body.dark-theme .hack-title,
+body.dark-theme .hack-label     { color: #E8E8F8; }
+body.dark-theme .hack-sub       { color: rgba(160,160,200,0.55); }
+body.dark-theme .photo-thumb    { background: #1C1C38; border-color: rgba(255,255,255,0.08); }
+body.dark-theme .cert-row       { background: #1C1C38; border-color: rgba(255,255,255,0.08); }
+body.dark-theme .cert-file-name { color: #E8E8F8; }
+body.dark-theme .cert-file-hint { color: rgba(160,160,200,0.55); }
+
+/* ── Certificates ── */
+body.dark-theme .certs-section  { background: #0B0B18; }
+body.dark-theme .cert-card      { background: #16162E; border-color: rgba(255,255,255,0.07); }
+body.dark-theme .cert-name      { color: #E8E8F8; }
+body.dark-theme .cert-issuer,
+body.dark-theme .cert-id        { color: rgba(160,160,200,0.55); }
+body.dark-theme .cert-desc      { color: #B0B0CC; }
+body.dark-theme .cert-priority  { color: rgba(255,255,255,0.06); }
+body.dark-theme .certs-title,
+body.dark-theme .certs-label    { color: #E8E8F8; }
+body.dark-theme .certs-sub      { color: rgba(160,160,200,0.55); }
+
+/* ── Projects ── */
+body.dark-theme .projects-section { background: #0E0E1C; }
+body.dark-theme .proj-card       { background: #16162E; border-color: rgba(255,255,255,0.07); }
+body.dark-theme .proj-body h3    { color: #E8E8F8; }
+body.dark-theme .proj-body p     { color: rgba(160,160,200,0.55); }
+body.dark-theme .proj-tag        { background: #1C1C38; border-color: rgba(255,255,255,0.08); color: #B0B0CC; }
+body.dark-theme .proj-link       { color: #A38BFF; }
+body.dark-theme .projects-title,
+body.dark-theme .projects-label  { color: #E8E8F8; }
+
+/* ── Education ── */
+body.dark-theme .edu-section  { background: #0B0B18; }
+body.dark-theme .edu-card     { background: #16162E; border-color: rgba(255,255,255,0.07); }
+body.dark-theme .edu-card h3  { color: #E8E8F8; }
+body.dark-theme .edu-school   { color: rgba(160,160,200,0.55); }
+body.dark-theme .section-label2,
+body.dark-theme .section-heading2 { color: #E8E8F8; }
+
+/* ── Achievements ── */
+body.dark-theme .ach-section  { background: #0E0E1C; }
+body.dark-theme .ach-card     { background: #16162E; border-color: rgba(255,255,255,0.07); }
+body.dark-theme .ach-title    { color: #E8E8F8; }
+body.dark-theme .ach-desc     { color: rgba(160,160,200,0.55); }
+body.dark-theme .section-label3,
+body.dark-theme .section-heading3 { color: #E8E8F8; }
+
+/* ── Footer ── */
+body.dark-theme .footer         { background: #080812; }
+
+/* ════════════════════════════════════════════
+   SCROLL REVEAL
+   ════════════════════════════════════════════ */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -38,13 +186,14 @@ img { max-width: 100%; display: block; }
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Staggered delays */
 .reveal-d1 { transition-delay: 0.1s; }
 .reveal-d2 { transition-delay: 0.2s; }
 .reveal-d3 { transition-delay: 0.3s; }
 .reveal-d4 { transition-delay: 0.4s; }
 
+/* ════════════════════════════════════════════
+   SHARED ANIMATIONS
+   ════════════════════════════════════════════ */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -55,5 +204,5 @@ img { max-width: 100%; display: block; }
 }
 @keyframes twinkle {
   0%,100% { opacity: 0.4; transform: scale(1); }
-  50%     { opacity: 1; transform: scale(1.3); }
+  50%     { opacity: 1;   transform: scale(1.3); }
 }
